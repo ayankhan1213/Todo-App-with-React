@@ -1,14 +1,19 @@
 import { useState } from "react"
 const App = () => {
-  const [title, setTitle] = useState("")
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Form Submitted by" , title );
-    setTitle("")
+  // const [title, setTitle] = useState("")
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   console.log("Form Submitted by" , title );
+  //   setTitle("")
+  // }
+  const [first, setFirst] = useState(10)
+  const fnc = () => {
+    setFirst(30)
   }
+
   return (
     <>
-      <div className="todo">
+      {/* <div className="todo">
         <form onSubmit={(e) => {
           handleSubmit(e)
         }}>
@@ -17,7 +22,11 @@ const App = () => {
           }} type="text" /> <br />
           <button>Submit</button>
         </form>
-      </div>
+      </div> */}
+
+
+      <h2>Value of Count is {first} </h2>
+      <button onClick={fnc}>Enter</button>
 
     </>
   )
