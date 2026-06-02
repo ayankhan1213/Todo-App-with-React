@@ -16,12 +16,17 @@ const App = () => {
   return (
     <>
 
-      <h2>{first.name} , {first.age}</h2>
+    <h2>{first.name} , {first.age}</h2>
+    <button onClick={()=>{
+      setFirst(prev => ({...first , age:50}))
+    }}>Click</button>
+
+      {/* <h2>{first.name} , {first.age}</h2>
       <button onClick={()=>{
         const copy = {...first};
         copy.name = "Sarthack"
         setFirst(copy)
-      }}>Click</button>
+      }}>Click</button> */}
       {/* <div className="todo">
         <form onSubmit={(e) => {
           handleSubmit(e)
