@@ -13,30 +13,44 @@ const App = () => {
   //   city: "Karachi"
   // })
 
-  const [todos, setTodos] = useState([
-    "HTML ",
-    "CSS",
-    "Javascript"
+  const [first, setFirst] = useState([
+    { id: 1, text: "HTML" },
+    { id: 2, text: "CSS" },
+    { id: 3, text: "JS" }
   ])
   return (
     <>
+      {first.map((elem,idx) => {
+        return (
+          <div key={idx} className="container">
+            <h2>{elem.text}</h2>
+             <button onClick={()=>{
+              setFirst(prev => prev.filter((deta)=>{
+                return deta.id !== elem.id
+                       // 1 !== 2 true
+                       // 2 !== 2 false
+                       // 3 !== 2 true
+              }))
+             }}>Delete</button>
+          </div>
 
-      {todos.map((elem, idx) => {
+        )
+      })}
+      {/* {todos.map((elem, idx) => {
         return (
           <div key={idx}>
 
             <h2>{elem}</h2>
             <button onClick={()=>{
               setTodos(prev => (prev.filter(todo =>{
-                return todo !== elem // 
+                return elem !== todo 
               })))
             }}>Delete</button>
 
           </div>
         )
-      })}
+      })} */}
 
-      
       {/* {todos.map((elem, idx) => {
         return <div key={idx}>
           <p>{elem}</p>
