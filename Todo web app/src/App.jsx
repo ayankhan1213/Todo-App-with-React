@@ -1,73 +1,74 @@
 import { useState } from "react"
+
 const App = () => {
-  // const [title, setTitle] = useState("")
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log("Form Submitted by" , title );
-  //   setTitle("")
-  // }
-  // const [first, setFirst] = useState(10)
-  // const fnc = () => {
-  //   setFirst(30)
-  // }
 
-  // const [first, setfirst] = useState(0)
-  // const [first, setFirst] = useState({name:"Ayan" , age:18})
+  // const [first, setFirst] = useState({
+  //   name: "Ayan",
+  //   age: 18
+  // })
 
-  const [first, setfirst] = useState("")
-  const submitHandler = (e) => {
-    e.preventDefault()
-    console.log(`${first} Submitted.`);
-    setfirst("")
-    
-  }
+  // const [first, setFirst] = useState({
+  //   name: "Ayan",
+  //   age: 18,
+  //   city: "Karachi"
+  // })
+
+  const [todos, setTodos] = useState([
+    "HTML ",
+    "CSS",
+    "Javascript"
+  ])
   return (
     <>
-      <form onSubmit={(e) => {
-        submitHandler(e)
-      }}>
-        <input value={first} onChange={(e)=>{
-          setfirst(e.target.value)
-        }} type="text" />
 
-        <button>Enter</button>
-      </form>
+      {todos.map((elem, idx) => {
+        return (
+          <div key={idx}>
 
-      {/* <h2>{first.name} , {first.age}</h2>
-    <button onClick={()=>{
-      setFirst(prev => ({...prev , add:50}))
-    }}>Click</button> */}
+            <h2>{elem}</h2>
+            <button onClick={()=>{
+              setTodos(prev => (prev.filter(todo =>{
+                return todo !== elem // 
+              })))
+            }}>Delete</button>
 
-      {/* <h2>{first.name} , {first.age}</h2>
-      <button onClick={()=>{
-        const copy = {...first};
-        copy.name = "Sarthack"
-        setFirst(copy)
+          </div>
+        )
+      })}
+
+      
+      {/* {todos.map((elem, idx) => {
+        return <div key={idx}>
+          <p>{elem}</p>
+          <button>Delete</button>
+        </div>
+      })} */}
+      {/* <h2>{first.age} {first.name} {first.city}</h2> */}
+      {/* <button onClick={() => {
+          setFirst(prev => ({
+            ...prev ,
+            age : 60,
+            adress : "4C"
+          }))
+        }}>Click</button> */}
+
+      {/* <button onClick={() => {
+        setFirst(prev => ({
+          ...prev,
+          name: "Sarthak",
+          age: prev.age + 1,
+        }))
       }}>Click</button> */}
-      {/* <div className="todo">
-        <form onSubmit={(e) => {
-          handleSubmit(e)
-        }}>
-          Enter your Name <br /> <input value={title} onChange={(e) => {
-            setTitle(e.target.value)
-          }} type="text" /> <br />
-          <button>Submit</button>
-        </form>
-      </div> */}
 
-
-      {/* <h2>Value of Count is {first} </h2>
-      <button onClick={fnc}>Enter</button> */}
-
-      {/* <h2>Value of Count is {first}</h2>
-      <button onClick={()=>{
-        setfirst(first+1)
+      {/* <button onClick={() => {
+        setTodos(prev =>
+          prev.filter(tod => tod !== "CSS")
+        )
       }}>Click</button> */}
-
 
 
     </>
   )
 }
 
-export default App;
+export default App
