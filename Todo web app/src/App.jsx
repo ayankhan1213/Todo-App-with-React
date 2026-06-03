@@ -12,14 +12,31 @@ const App = () => {
   // }
 
   // const [first, setfirst] = useState(0)
-  const [first, setFirst] = useState({name:"Ayan" , age:18})
+  // const [first, setFirst] = useState({name:"Ayan" , age:18})
+
+  const [first, setfirst] = useState("")
+  const submitHandler = (e) => {
+    e.preventDefault()
+    console.log(`${first} Submitted.`);
+    setfirst("")
+    
+  }
   return (
     <>
+      <form onSubmit={(e) => {
+        submitHandler(e)
+      }}>
+        <input value={first} onChange={(e)=>{
+          setfirst(e.target.value)
+        }} type="text" />
 
-    <h2>{first.name} , {first.age}</h2>
+        <button>Enter</button>
+      </form>
+
+      {/* <h2>{first.name} , {first.age}</h2>
     <button onClick={()=>{
-      setFirst(prev => ({...first , age:50}))
-    }}>Click</button>
+      setFirst(prev => ({...prev , add:50}))
+    }}>Click</button> */}
 
       {/* <h2>{first.name} , {first.age}</h2>
       <button onClick={()=>{
@@ -47,7 +64,7 @@ const App = () => {
         setfirst(first+1)
       }}>Click</button> */}
 
-      
+
 
     </>
   )
